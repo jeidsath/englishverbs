@@ -7,7 +7,6 @@ BE['finite']['past'] = {}
 BE['finite']['past']['singular'] = {}
 BE['finite']['past']['plural'] = {}
 
-
 BE['finite']['present']['singular']['first'] = 'am'
 BE['finite']['present']['singular']['second'] = 'are'
 BE['finite']['present']['singular']['third'] = 'is'
