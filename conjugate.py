@@ -45,6 +45,10 @@ def construct_forms():
 def conjugate(infinitive='be', person='third', number='singular',
               voice='active', tense='present', aspect='unmarked'):
 
+    # for to be, the passive voice is the active
+    if infinitive == 'be' and voice == 'passive':
+        voice = 'active'
+
     form = construct_forms()[voice][aspect]
     return resolve(form, infinitive, person, number, voice, tense, aspect)
 
