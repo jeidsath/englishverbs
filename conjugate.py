@@ -54,16 +54,18 @@ def resolve(form, infinitive, person, number, voice, tense, aspect):
     for ff in form:
         if ff == ':verb':
             output.append(verb(infinitive, tense, person, number))
-        if ff == ':infinitive':
+        elif ff == ':infinitive':
             output.append(infinitive)
-        if ff == ':present_participle':
+        elif ff == ':present_participle':
             output.append(present_participle(infinitive))
-        if ff == ':past_participle':
+        elif ff == ':past_participle':
             output.append(past_participle(infinitive))
-        if ff == ':have':
+        elif ff == ':have':
             output.append(verb('have', tense, person, number))
-        if ff == ':be':
+        elif ff == ':be':
             output.append(verb('be', tense, person, number))
+        else:
+            output.append(ff)
 
     return ' '.join(output)
 
