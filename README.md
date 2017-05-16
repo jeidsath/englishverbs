@@ -4,11 +4,13 @@ Conjugates english verbs, inspired by https://github.com/rossmeissl/verbs
 
 ## Arguments
 
-person: first, second, third
-number: singular, plural
-voice: active, passive
-tense: past, present, future,
-aspect: unmarked, progressive, perfect
+| Argument | Values |
+| --- | --- |
+| person | first, second, third |
+| number | singular, plural |
+| voice | active, passive |
+| tense | past, present, future |
+| aspect | unmarked, progressive, perfect |
 
 ## Example
 
