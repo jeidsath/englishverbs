@@ -5,7 +5,6 @@
 # voice: active, passive
 # tense: past, present, future,
 # aspect: unmarked, progressive, perfect
-# mood: indicative, imperative, subjunctive, interrogative
 
 
 import re
@@ -44,18 +43,17 @@ def construct_forms():
 
 
 def conjugate(infinitive='be', person='third', number='singular',
-              voice='active', tense='present', aspect='unmarked',
-              mood='indicative'):
+              voice='active', tense='present', aspect='unmarked'):
 
     form = construct_forms()[voice][aspect]
-    return resolve(form, infinitive, person, number, voice, tense, aspect, mood)
+    return resolve(form, infinitive, person, number, voice, tense, aspect)
 
 
-def resolve(form, infinitive, person, number, voice, tense, aspect, mood):
+def resolve(form, infinitive, person, number, voice, tense, aspect):
     output = []
     for ff in form:
         if ff == ':verb':
-            output.append(verb(infinitive, tense, person, number, mood))
+            output.append(verb(infinitive, tense, person, number))
         if ff == ':infinitive':
             output.append(infinitive)
         if ff == ':present_participle':
@@ -63,9 +61,9 @@ def resolve(form, infinitive, person, number, voice, tense, aspect, mood):
         if ff == ':past_participle':
             output.append(past_participle(infinitive))
         if ff == ':have':
-            output.append(verb('have', tense, person, number, mood))
+            output.append(verb('have', tense, person, number))
         if ff == ':be':
-            output.append(verb('be', tense, person, number, mood))
+            output.append(verb('be', tense, person, number))
 
     return ' '.join(output)
 
@@ -143,8 +141,8 @@ def past_participle(infinitive):
     return preterite_for(infinitive)
 
 
-def verb(infinitive, tense, person, number, mood):
-    # TODO: mood
+def verb(infinitive, tense, person, number):
+
     if tense == 'past' or tense == 'present':
         if infinitive == 'be':
             return irregulars.BE['finite'][tense][number][person]
